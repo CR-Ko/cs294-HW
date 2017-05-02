@@ -1,0 +1,27 @@
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+
+#img = cv2.imread('/home/koo/homework/hw3/tt.JPG')
+#gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+#plt.imshow(img, cmap='gray')
+#plt.show()
+
+
+cap = cv2.VideoCapture('tt.mp4')
+count = 0
+print('ok')
+print cap.isOpened()
+while cap.isOpened():
+    ret,frame = cap.read()
+    cv2.imshow('window-name',frame)
+    cv2.imwrite("frame%d.jpg" % count, frame)
+    count = count + 1
+    
+    if cv2.waitKey(10) & 0xFF == ord('q'):
+        break
+
+
+cap.release()
+cap.destroyAllWindows()
